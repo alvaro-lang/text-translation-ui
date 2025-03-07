@@ -5,10 +5,42 @@
 #home .translation-form{
     display: flex;
     justify-content: space-between;
+    flex-direction: column;
+}
+
+#home .translation-form .container-translations{
+    display: flex;
+    flex-direction: row;
     gap: 10%;
 }
 
-#home .translation-form textarea{
+#home .translation-form .container-select-language-style{
+    margin: 10px 0;
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+    gap: 10px
+}
+
+#home .translation-form .container-select-language-style select {
+    width: 45%;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 1rem;
+    color: rgb(71, 71, 71);
+    background-color: rgb(41, 128, 185, 0.3);
+    outline: none;
+    border: none;
+    transition: 0.3s;
+}
+
+#home .translation-form .container-select-language-style select:hover {
+    background-color: rgb(41, 128, 185);
+    color: white;
+    border-color: rgb(41, 128, 185);
+}
+
+#home .translation-form .container-translations textarea{
     height: 150px;
     padding: 15px 10px;
     font-family:inherit;
@@ -20,26 +52,26 @@
     resize: none;
 }
 
-#home .translation-form .container-textarea-button textarea:focus{
+#home .translation-form .container-translations .container-textarea-button textarea:focus{
     border: 1px solid rgba(0, 0, 0, 0.4);
 }
 
-#home .translation-form .width-row{
+#home .translation-form .container-translations .width-row{
     width: 100%;
 }
 
-#home .translation-form .container-textarea-button{
+#home .translation-form .container-translations .container-textarea-button{
     display: flex;
     flex-direction: column;
 }
 
-#home .translation-form .container-textarea-button .translate-button{
+#home .translation-form .container-translations .container-textarea-button .translate-button{
     display: flex;
     justify-content: flex-end;
     margin: 10px 5px;
 }
 
-#home .translation-form .container-textarea-button .translate-button button{
+#home .translation-form .container-translations .container-textarea-button .translate-button button{
     background-color: rgb(52, 152, 219);
     color: white;
     font-size: 1rem;
@@ -49,15 +81,18 @@
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease;
 }
-#home .translation-form .container-textarea-button .translate-button button:hover {
+#home .translation-form .container-translations .container-textarea-button .translate-button button:hover {
     background-color: rgb(41, 128, 185);
     transform: scale(1.05);
 }
-#home .translation-form .container-textarea-button .translate-button button:active {
+#home .translation-form .container-translations .container-textarea-button .translate-button button:active {
     transform: scale(1);
 }
 
-#home .translation-form .text-translated-textarea{
+#home .translation-form .container-translations .container-textarea{
+    display: flex;
+} 
+#home .translation-form .container-translations .container-textarea .text-translated-textarea{
     width: 100%;
     background-color: rgb(223, 223, 223);
 }
