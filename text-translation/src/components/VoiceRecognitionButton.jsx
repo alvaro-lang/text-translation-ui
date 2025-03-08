@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import '../styles/VoiceRecognitionButton.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faMicrophone, faMicrophoneSlash } from '@fortawesome/free-solid-svg-icons'
 
 export default function VoiceRecognitionButton({setSourceText}){
   const [isListening, setIsListening] = useState(false)
@@ -46,11 +48,12 @@ export default function VoiceRecognitionButton({setSourceText}){
 
   return (
     <div id='voice-recognition'>
-        <img
-          onClick={toggleListening}
-          src={isListening ? 'mic_active.png' : 'mic_inactive.png'} 
-          alt="Mic" 
-        />
+      <div className='mic-circle' onClick={toggleListening}>
+        {isListening ? 
+          (<FontAwesomeIcon className='mic-icon active' icon={faMicrophone} />) : 
+          (<FontAwesomeIcon className='mic-icon inactive' icon={faMicrophoneSlash} />)
+        }
+      </div>
     </div>
   )
 }

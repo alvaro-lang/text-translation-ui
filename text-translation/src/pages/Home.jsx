@@ -30,6 +30,13 @@ export default function Home() {
         setLanguages(Array.from(allLanguages).sort())
       })
   }, [])
+  
+  useEffect(() => {
+    setTranslationData((prevState) => ({
+      ...prevState,
+      source_text: sourceText,
+    }));
+  }, [sourceText])
 
   const onChangeText = (event) => {
     const newText = event.target.value;

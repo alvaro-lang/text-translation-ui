@@ -47,7 +47,8 @@
 #home .container-translations .container-textarea-button .voice-recognition-translate-button{
     display: flex;
     justify-content: space-between;
-    margin: 20px 10px;
+    align-items: center;
+    margin: 15px 10px;
 }
 
 #home .container-translations .text-translated-textarea{
