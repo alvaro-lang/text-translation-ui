@@ -1,0 +1,71 @@
+#auth-button {
+    position: relative;
+}
+
+#auth-button button {
+    min-width: 120px;
+    border: 1px solid rgb(52, 152, 219);
+    font-size: 1rem;
+    padding: 12px 24px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#auth-button button:hover {
+    background-color: rgb(41, 128, 185);
+    color: white;
+}
+
+#auth-button .active-button {
+    background-color: rgb(41, 128, 185);
+    color: white;
+}
+
+#auth-button .box {
+    width: 400px;
+    height: auto;
+    
+    position: absolute;
+    top: 100%;
+    right: 0;
+    margin-top: 10px;
+
+    border: 1px solid rgb(187, 187, 187);
+    border-radius: 5px;
+    padding: 0 20px; 
+    background-color: white;
+
+    opacity: 0;
+    overflow: hidden;
+    transition: 0.3s;
+}
+
+#auth-button .box.show {
+    opacity: 1;
+    padding: 0 20px 20px 20px;
+}
+
+#auth-button .auth-option{
+    display: flex;
+    gap: 5%;
+}
+
+#auth-button .auth-option .option{
+    width: 100%;
+    text-align: center;
+    border: 2px solid rgb(187, 187, 187);
+    border-radius: 0 0 10px 10px;
+    border-top: none;
+    padding: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#auth-button .auth-option .option:hover{
+    background-color: rgb(178, 178, 178, 0.5);
+}
+
+#auth-button .auth-option .option.active{
+    background-color: rgb(178, 178, 178, 0.9);
+}
