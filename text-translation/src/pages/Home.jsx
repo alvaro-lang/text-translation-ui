@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react"
 import axios from "axios"
 import "../styles/Home.css"
+import BlueSelect from "../components/BlueSelect"
+import BlueButton from "../components/BlueButton"
+import VoiceRecognitionButton from "../components/VoiceRecognitionButton"
 
 export default function Home() {
   const [languages, setLanguages] = useState([])
@@ -9,6 +12,7 @@ export default function Home() {
     language: "",
     style: "",
   })
+  const [sourceText, setSourceText] = useState("")
   const [animatedText, setAnimatedText] = useState("")
   const [loading, setLoading] = useState(false);
   const [submited, setSubmited] = useState(false);
@@ -28,10 +32,12 @@ export default function Home() {
   }, [])
 
   const onChangeText = (event) => {
+    const newText = event.target.value;
     setTranslationData((prevState) => ({
       ...prevState,
-      source_text: event.target.value,
-    }))
+      source_text: newText,
+    }));
+    setSourceText(newText);
   }
 
   const onChangeLanguage = (event) => {
@@ -86,42 +92,26 @@ export default function Home() {
 
   return (
     <div id="home">
-      <form className="translation-form" onSubmit={translateText}>
-        <div className="container-select-language-style">
-          <select className={submited && !translationData.style ? 'blinking' : ""} onChange={onChangeLanguage} defaultValue="">
-            <option value="" disabled>
-              Select language
-            </option>
-            {languages.map((language, index) => (
-              <option key={index} value={language}>
-                {language}
-              </option>
-            ))}
-          </select>
-          <select className={submited && !translationData.style ? 'blinking' : ""} onChange={onChangeStyle} defaultValue="">
-            <option value="" disabled>
-              Select translate style
-            </option>
-            <option value="formally">Formally</option>
-            <option value="informally">Informally</option>
-          </select>
+      <form onSubmit={translateText}>
+        <div className="blue-selects">
+          <BlueSelect defaultOption={'Select style'} arrayOptions={['Formally', 'Informally']} submited={submited} translationDataAtribute={translationData.style} onChangeFunction={onChangeStyle} />
+          <BlueSelect defaultOption={'Select language'} arrayOptions={languages} submited={submited} translationDataAtribute={translationData.language} onChangeFunction={onChangeLanguage} />
         </div>
         <div className="container-translations">
-          <div className="container-textarea-button width-row">
+          <div className="container-textarea-button textarea-width">
             <textarea
-              className={`source-text-textarea ${submited && !translationData.source_text ? 'blinking' : ""}`}
+              value={sourceText}
+              className={submited && !translationData.source_text ? 'blinking' : ""}
               onChange={onChangeText}
               type="text"
               placeholder="Type a text to translate"
             />
-            <div className="translate-button">
-              <button type="submit" disabled={loading}>
-                  {loading ? <span className="spinner"></span> : "Translate"}
-              </button>
+            <div className="voice-recognition-translate-button">
+              <VoiceRecognitionButton setSourceText={setSourceText}/>
+              <BlueButton loading={loading} text='Translate'/>
             </div>
           </div>
-
-          <div className="container-textarea width-row">
+          <div className="textarea-width">
             <textarea
               value={animatedText}
               readOnly

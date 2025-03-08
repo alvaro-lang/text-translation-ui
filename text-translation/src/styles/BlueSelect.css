@@ -1,0 +1,17 @@
+#blue-select {
+    width: 45%;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 1rem;
+    color: rgb(71, 71, 71);
+    background-color: rgb(41, 128, 185, 0.3);
+    outline: none;
+    border: none;
+    transition: 0.3s;
+}
+
+#blue-select:hover {
+    background-color: rgb(41, 128, 185);
+    color: white;
+    border-color: rgb(41, 128, 185);
+}
