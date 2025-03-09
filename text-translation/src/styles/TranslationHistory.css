@@ -1,0 +1,31 @@
+#translation-history {
+  margin: 10% 0;
+  border-radius: 8px;
+}
+
+#translation-history h1 {
+  text-align: center;
+  color: #333;
+}
+
+#translation-history .container-texts{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 5%;
+    margin-top: 60px;
+}
+
+#translation-history .container-texts .text{
+    text-align: justify;
+    max-width: 300px;
+    border: 1px solid black;
+    background-color: #dfdfdf;
+    padding: 20px;
+    border-radius: 10px;
+    width: 100%;
+}
+
+#translation-history .container-texts .arrow{
+    height: 20px;
+}

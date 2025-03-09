@@ -1,5 +1,5 @@
 #home{
-    margin: 0 10%;
+    margin: 0 5%;
 }
 
 #home .blue-selects{
@@ -55,7 +55,7 @@
     width: 100%;
     background-color: rgb(223, 223, 223);
 }
-  
+
 .blinking {
     animation: blink-shadow 0.5s infinite alternate;
 }

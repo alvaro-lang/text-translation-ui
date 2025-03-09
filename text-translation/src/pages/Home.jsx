@@ -4,8 +4,9 @@ import "../styles/Home.css"
 import BlueSelect from "../components/BlueSelect"
 import BlueButton from "../components/BlueButton"
 import VoiceRecognitionButton from "../components/VoiceRecognitionButton"
+import TranslationHistory from "../components/TranslationHistory"
 
-export default function Home() {
+export default function Home({token}) {
   const [languages, setLanguages] = useState([])
   const [translationData, setTranslationData] = useState({
     source_text: "",
@@ -13,7 +14,7 @@ export default function Home() {
     style: "",
   })
   const [sourceText, setSourceText] = useState("")
-  const [animatedText, setAnimatedText] = useState("")
+  const [translatedText, setTranslatedText] = useState("")
   const [loading, setLoading] = useState(false);
   const [submited, setSubmited] = useState(false);
 
@@ -68,12 +69,18 @@ export default function Home() {
     if(!translationData.source_text || !translationData.language || !translationData.style){
       return
     }
-
+    
     setLoading(true)
+
+    const config = {
+      headers: {
+        'Authorization': token ? `Bearer ${token}` : '',
+      }
+    }
     axios
-      .post("http://localhost:8000/api/translation/translate", translationData)
+      .post("http://localhost:8000/api/translation/translate", translationData, config)
       .then((response) => {
-        animateText(response.data.text_translated)
+        setTranslatedText(response.data.text_translated)
       })
       .catch((error) => {
         console.error(error)
@@ -82,19 +89,6 @@ export default function Home() {
         setLoading(false)
         setSubmited(false)
       })
-  }
-
-  const animateText = (text) => {
-    setAnimatedText("")
-    let i = 0
-    const interval = setInterval(() => {
-      if (i < text.length) {
-        setAnimatedText((prev) => prev + text.charAt(i))
-        i++
-      } else {
-        clearInterval(interval)
-      }
-    }, 10)
   }
 
   return (
@@ -120,7 +114,7 @@ export default function Home() {
           </div>
           <div className="textarea-width">
             <textarea
-              value={animatedText}
+              value={translatedText}
               readOnly
               className="text-translated-textarea"
               type="text"
@@ -128,6 +122,7 @@ export default function Home() {
           </div>
         </div>
       </form>
+      {token ? <TranslationHistory token={token} /> : <></>}
     </div>
   )
 }

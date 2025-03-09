@@ -5,7 +5,7 @@ import LogoutButton from './components/LogoutButton';
 import Home from './pages/Home';
 
 function App() {
-  const [token, setToken] = useState('')
+  const [token, setToken] = useState(localStorage.getItem('access_token') || '');
   
   return (
     <div id="App">
@@ -13,7 +13,7 @@ function App() {
         <img className='page-logo' src='page_logo.png' alt='Page logo'></img>
         {token ? (<LogoutButton text='Log Out' setToken={setToken}/>) : (<AuthButton text='Authentication' setToken={setToken}/>)}
       </header>
-      <Home/>
+      <Home token={token}/>
       
     </div>
   );
