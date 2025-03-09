@@ -3,6 +3,7 @@ import '../styles/TranslationHistory.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios'
+import API_URL from "../config";
 
 export default function TranslationHistory({token}) {
 
@@ -15,7 +16,7 @@ export default function TranslationHistory({token}) {
       }
     
     useEffect(() => {
-        axios.get('http://localhost:8000/api/translation/history/', config)
+        axios.get(`${API_URL}/api/translation/history/`, config)
         .then((response) =>{
             setTexts(response.data)
         })

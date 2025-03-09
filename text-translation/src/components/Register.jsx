@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import '../styles/Register.css';
 import axios from 'axios'
 import login from '../authLogin'
+import API_URL from "../config";
 
 export default function Register({setIsVisible, setToken}) {
   const [username, setUsername] = useState('');
@@ -31,7 +32,7 @@ export default function Register({setIsVisible, setToken}) {
   
     setFieldErrors({});
   
-    await axios.post('http://localhost:8000/api/auth/register', { username, password }).catch((error) =>{
+    await axios.post(`${API_URL}/api/auth/register`, { username, password }).catch((error) =>{
       if(error.response.data.password[0]){
         setPasswordError('Ensure password has at least 6 characters.')
       }

@@ -5,6 +5,7 @@ import BlueSelect from "../components/BlueSelect"
 import BlueButton from "../components/BlueButton"
 import VoiceRecognitionButton from "../components/VoiceRecognitionButton"
 import TranslationHistory from "../components/TranslationHistory"
+import API_URL from "../config";
 
 export default function Home({token}) {
   const [languages, setLanguages] = useState([])
@@ -78,7 +79,7 @@ export default function Home({token}) {
       }
     }
     axios
-      .post("http://localhost:8000/api/translation/translate", translationData, config)
+      .post(`${API_URL}/api/translation/translate`, translationData, config)
       .then((response) => {
         setTranslatedText(response.data.text_translated)
       })
