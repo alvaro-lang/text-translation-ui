@@ -25,7 +25,7 @@ export default function TranslationHistory({token}) {
         <div id="translation-history">
         <h1>Your latest translations</h1>
         {
-            texts.slice(-5).reverse().map((obj, index) => {
+            texts.map((obj, index) => {
                 return (
                     <div key={index} className='container-texts'>
                         <div className='text'>
