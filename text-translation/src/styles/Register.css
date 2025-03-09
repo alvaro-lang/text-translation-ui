@@ -1,37 +1,48 @@
 #register {
-    margin-top: 10px;
-    width: 100%;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-  }
-  
-  form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-  
-  input {
-    padding: 10px;
-    margin: 5px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
-  }
-  
-  button {
-    padding: 10px;
-    background-color: rgb(52, 152, 219);
-    color: white;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: rgb(41, 128, 185);
-  }
-  
+  margin-top: 10px;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+#register form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#register input {
+  padding: 10px;
+  margin: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+#register button {
+  padding: 10px;
+  background-color: rgb(52, 152, 219);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+#register button:hover {
+  background-color: rgb(41, 128, 185);
+}
+
+#register .error {
+  border: 1px solid red;
+}
+
+#register .error-message {
+  color: red;
+  text-align: left;
+  margin-left: 10px;
+  margin-bottom: 10px;
+
+}

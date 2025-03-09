@@ -3,16 +3,12 @@ import '../styles/AuthButton.css'
 import Login from './Login'
 import Register from './Register'
 
-export default function AuthButton({ text }) {
+export default function AuthButton({text, setToken}) {
     const [isVisible, setIsVisible] = useState(false)
     const [login, setLogin] = useState(true)
 
     const changeValueVisible = () => {
         setIsVisible(prevIsVisible => !prevIsVisible)
-    }
-
-    const changeAuthOption = () =>{
-        setLogin(prevLogin => !prevLogin)
     }
 
     return (
@@ -22,16 +18,16 @@ export default function AuthButton({ text }) {
             </button>
             <div className={`box ${isVisible ? 'show' : ''}`}>
                 <div className='auth-option'>
-                    <div onClick={changeAuthOption} className={`option ${login ? 'active' : ''}`}>
+                    <div onClick={() => setLogin(true)} className={`option ${login ? 'active' : ''}`}>
                         Sign in
                     </div>
-                    <div onClick={changeAuthOption} className={`option ${login ? '' : 'active'}`}>
+                    <div onClick={() => setLogin(false)} className={`option ${login ? '' : 'active'}`}>
                         Sign up
                     </div>
                 </div>
                 {login ? 
-                    (<Login/>) :
-                    (<Register/>)
+                    (<Login setIsVisible={setIsVisible} setToken={setToken}/>) :
+                    (<Register setIsVisible={setIsVisible} setToken={setToken}/>)
                 }
             </div>
         </div>

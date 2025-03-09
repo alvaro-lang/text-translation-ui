@@ -1,13 +1,17 @@
 import './App.css';
+import React, { useState } from 'react'
 import AuthButton from './components/AuthButton';
+import LogoutButton from './components/LogoutButton';
 import Home from './pages/Home';
 
 function App() {
+  const [token, setToken] = useState('')
+  
   return (
     <div id="App">
       <header className='header'>
         <img className='page-logo' src='page_logo.png' alt='Page logo'></img>
-        <AuthButton text='Authentication'/>
+        {token ? (<LogoutButton text='Log Out' setToken={setToken}/>) : (<AuthButton text='Authentication' setToken={setToken}/>)}
       </header>
       <Home/>
       
