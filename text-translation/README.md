@@ -25,3 +25,7 @@ npm install
 ```sh
 npm start
 ```
+
+### 3. Create .env file
+
+Copy the content of '.env.example' to an .env file
