@@ -1,14 +1,17 @@
 import React, { useState } from 'react';
 import '../styles/Login.css';
 import login from '../authLogin'
+import BlueButton from './BlueButton';
 
 export default function Login({setIsVisible, setToken}) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState({ username: false, password: false });
   const [loginError, setLoginError] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e) => {
+    setLoading(true)
     e.preventDefault();
     
     let newError = { username: username === '', password: password === '' };
@@ -25,6 +28,7 @@ export default function Login({setIsVisible, setToken}) {
         setLoginError(error.message)
       }
     }
+    setLoading(false)
   };
 
   return (
@@ -47,7 +51,7 @@ export default function Login({setIsVisible, setToken}) {
         />
         {loginError && <div className="error-message">{loginError}</div>}
 
-        <button type="submit">Submit</button>
+        <BlueButton loading={loading} text={'Submit'}/>
       </form>
     </div>
   );

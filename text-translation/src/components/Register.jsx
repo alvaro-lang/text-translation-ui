@@ -3,6 +3,7 @@ import '../styles/Register.css';
 import axios from 'axios'
 import login from '../authLogin'
 import API_URL from "../config";
+import BlueButton from './BlueButton';
 
 export default function Register({setIsVisible, setToken}) {
   const [username, setUsername] = useState('');
@@ -11,8 +12,10 @@ export default function Register({setIsVisible, setToken}) {
   const [fieldErrors, setFieldErrors] = useState({});
   const [usernameError, setUsernameError] = useState('');
   const [passwordError, setPasswordError] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e) => {
+    setLoading(true)
     e.preventDefault();
     let errors = {};
     setUsernameError('');
@@ -27,6 +30,7 @@ export default function Register({setIsVisible, setToken}) {
   
     if (Object.keys(errors).length > 0) {
       setFieldErrors(errors);
+      setLoading(false)
       return;
     }
   
@@ -43,6 +47,7 @@ export default function Register({setIsVisible, setToken}) {
       setIsVisible(false);
       setToken(localStorage.getItem('access_token'))
     }
+    setLoading(false)
   }
   
 
@@ -80,7 +85,7 @@ export default function Register({setIsVisible, setToken}) {
         {fieldErrors.passwordMatch && <div className="error-message">{fieldErrors.passwordMatch}</div>}
         {passwordError && <div className="error-message">{passwordError}</div>}
 
-        <button type="submit">Submit</button>
+        <BlueButton loading={loading} text={'Submit'}/>
       </form>
     </div>
   );
